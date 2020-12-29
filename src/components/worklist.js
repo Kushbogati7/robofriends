@@ -3,7 +3,7 @@
 
 import Robot from '../components/work';
 
-function List({robopeople}) {
+function List({}) {
      
    return(
        <div>
