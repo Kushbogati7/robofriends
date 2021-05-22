@@ -9,12 +9,14 @@ function App () {
  
   const [robot ,setRobot] = useState([]);
   const [searchfield, setSearchfield] = useState('')
+  const [count, setCount] = useState(0);
 
   useEffect(()=>{
       fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(robofriend => setRobot(robofriend))
-  })
+      console.log(count)
+  },[count])   //only run useEffect when count is changed,which ultimately fetches the data whenever chanhge is done in count
 
     
        
@@ -28,6 +30,7 @@ function App () {
         <div className="tc">   
            <h1 className="f1">RoboFriends</h1>
            <Searchbox searchChange = {(event)=>setSearchfield(event.target.value)}/>
+           <button onClick={()=>setCount(count+1)}>please click</button>
            <Scroll>
             <ErrorBoundary>
               <List robopeople={filteredRobots} />
